@@ -2,7 +2,7 @@
 
 
 def unique_houses(filename):
-    """TODO: Return a set of student houses.
+    """
 
     Iterate over the cohort_data.txt file to look for all of the included house names
     and create a set called "houses" that holds those names.
@@ -24,13 +24,8 @@ def unique_houses(filename):
 
 
 
-    #Code goes here
-
-    # return houses
-
-
 def sort_by_cohort(filename):
-    """TODO: Return a list of all cohort lists, including ghosts but not instructors.
+    """
 
     Sort students by cohort, skipping instructors.
 
@@ -42,15 +37,31 @@ def sort_by_cohort(filename):
     >>> sort_by_cohort("cohort_data.txt")
     [['Harry Potter', 'Mandy Brocklehurst', 'Ron Weasley', 'Oliver Wood', 'Colin Creevey', 'Cho Chang', 'Michael Corner', 'Draco Malfoy', 'Seamus Finnigan', 'Eddie Carmichael', 'Theodore Nott', 'Terence Higgs', 'Hermione Granger', 'Penelope Clearwater', 'Angelina Johnson', 'Dennis Creevey'], ['Neville Longbottom', 'Cedric Diggory', 'Pansy Parkinson', 'Anthony Goldstein', 'Padma Patil', 'Luna Lovegood', 'Eleanor Branstone', 'Lee Jordan', 'Marietta Edgecombe', 'Andrew Kirke', 'Ginny Weasley', 'Mary Macdonald', 'Blaise Zabini', 'Natalie McDonald', 'Adrian Pucey', 'Hannah Abbott', 'Graham Pritchard', 'Susan Bones', 'Roger Davies', 'Owen Cauldwell'], ['Laura Madley', 'Orla Quirke', 'Parvati Patil', 'Eloise Midgeon', 'Zacharias Smith', 'Cormac McLaggen', 'Lisa Turpin', 'Demelza Robins', 'Ernie Macmillan', 'Millicent Bullstrode', 'Percy Weasley', 'Jimmy Peakes', 'Justin Finch-Fletchley', 'Miles Bletchley', 'Malcolm Baddock'], ['Marcus Belby', 'Euan Abercrombie', 'Vincent Crabbe', 'Ritchie Coote', 'Katie Bell', 'Terry Boot', 'Lavender Brown', 'Gregory Goyle', 'Marcus Flint', 'Dean Thomas', 'Jack Sloper', 'Rose Zeller', 'Stewart Ackerley', 'Fred Weasley', 'George Weasley', 'Romilda Vane', 'Alicia Spinnet', 'Kevin Whitby'], ['Friendly Friar', 'Grey Lady', 'Nearly Headless Nick', 'Bloody Baron']]
     """
-
+    filename = open('cohort_data.txt')
     all_students = []
     winter_16 = []
     spring_16 = []
     summer_16 = []
     fall_15 = []
     ghosts = []
+    for line in filename:
+        lines = line.split('|')
+        if lines[4][1] == 'p':
+            spring_16.append(lines[0] + ' ' + lines[1])
+        elif lines[4][1] == 'i':
+            winter_16.append(lines[0] + ' ' + lines[1])
+        elif lines[4][1] == 'u':
+            summer_16.append(lines[0] + ' ' + lines[1])
+        elif lines[4][1] == 'a':
+            fall_15.append(lines[0] + ' ' + lines[1])
+        elif lines[4][0] == 'G':
+            ghosts.append(lines[0] + ' ' + lines[1])
 
-    # Code goes here
+    all_students.append(fall_15)
+    all_students.append(winter_16)
+    all_students.append(spring_16)
+    all_students.append(summer_16)
+    all_students.append(ghosts)
 
     return all_students
 
