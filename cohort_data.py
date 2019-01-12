@@ -79,7 +79,7 @@ def hogwarts_by_house(filename):
     [['Abbott', 'Chang', 'Creevey', 'Creevey', 'Edgecombe', 'Nott', 'Spinnet'], ['Abercrombie', 'Bell', 'Brown', 'Coote', 'Finnigan', 'Granger', 'Johnson', 'Jordan', 'Kirke', 'Longbottom', 'Macdonald', 'McDonald', 'McLaggen', 'Patil', 'Peakes', 'Potter', 'Robins', 'Sloper', 'Thomas', 'Vane', 'Weasley', 'Weasley', 'Weasley', 'Weasley', 'Weasley', 'Wood'], ['Bones', 'Branstone', 'Cauldwell', 'Diggory', 'Finch-Fletchley', 'Macmillan', 'Madley', 'Midgeon', 'Smith', 'Whitby', 'Zeller'], ['Ackerley', 'Belby', 'Boot', 'Brocklehurst', 'Carmichael', 'Clearwater', 'Corner', 'Davies', 'Goldstein', 'Lovegood', 'Patil', 'Quirke', 'Turpin'], ['Baddock', 'Bletchley', 'Bullstrode', 'Crabbe', 'Flint', 'Goyle', 'Higgs', 'Malfoy', 'Parkinson', 'Pritchard', 'Pucey', 'Zabini'], ['Baron', 'Friar', 'Lady', 'Nick'], ['Flitwick', 'McGonagall', 'Snape', 'Sprout']]
 
     """
-
+    filename = open('cohort_data.txt')
     all_hogwarts = []
     dumbledores_army = []
     gryffindor = []
@@ -89,9 +89,21 @@ def hogwarts_by_house(filename):
     ghosts = []
     instructors = []
 
-    # Code goes here
-
-    return all_hogwarts
+    for line in filename:
+        line = line.rstrip()
+        lines = line.split('|')
+        if lines[2] == 'Gryffindor': # gryffindor
+            gryffindor.append(lines[1])
+        elif lines[2] == 'Hufflepuff':
+            hufflepuff.append(lines[1])
+        elif lines[2] == 'Ravenclaw':
+            ravenclaw.append(lines[1])
+        elif lines[2] == 'Dumbledore\'s Army':
+            dumbledores_army .append(lines[1])
+        elif lines[2] == 'Slytherin':
+            slytherin.append(lines[1])
+        elif lines[2]
+    return gryffindor
 
 
 def all_students_tuple_list(filename):
